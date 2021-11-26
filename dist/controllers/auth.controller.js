@@ -156,98 +156,99 @@ var authController = {
               roles = _context2.sent;
 
               if (!(roles.rowCount === 0)) {
-                _context2.next = 13;
+                _context2.next = 14;
                 break;
               }
 
+              console.log('roles', roles.rowCount);
               (0, _response.response)(req, res, 'ERROR', null, 500);
               return _context2.abrupt("return");
 
-            case 13:
+            case 14:
               result = _objectSpread(_objectSpread({}, user.rows[0]), {}, {
                 roles: roles.rows,
                 permisos: []
               }); // roles_permisos
 
               if (!(result.roles.length === 1)) {
-                _context2.next = 21;
+                _context2.next = 22;
                 break;
               }
 
-              _context2.next = 17;
+              _context2.next = 18;
               return _User.User.getPermissions(roles.rows[0].id);
 
-            case 17:
+            case 18:
               permissions = _context2.sent;
               result = _objectSpread(_objectSpread({}, result), {}, {
                 permisos: _toConsumableArray(permissions.rows)
               });
-              _context2.next = 40;
+              _context2.next = 41;
               break;
 
-            case 21:
+            case 22:
               _iterator = _createForOfIteratorHelper(result.roles);
-              _context2.prev = 22;
+              _context2.prev = 23;
 
               _iterator.s();
 
-            case 24:
+            case 25:
               if ((_step = _iterator.n()).done) {
-                _context2.next = 32;
+                _context2.next = 33;
                 break;
               }
 
               role = _step.value;
-              _context2.next = 28;
+              _context2.next = 29;
               return _User.User.getPermissions(role.id);
 
-            case 28:
+            case 29:
               _permissions = _context2.sent;
               result = _objectSpread(_objectSpread({}, result), {}, {
                 permisos: [].concat(_toConsumableArray(_permissions.rows), _toConsumableArray(result.permisos))
               });
 
-            case 30:
-              _context2.next = 24;
+            case 31:
+              _context2.next = 25;
               break;
 
-            case 32:
-              _context2.next = 37;
+            case 33:
+              _context2.next = 38;
               break;
 
-            case 34:
-              _context2.prev = 34;
-              _context2.t0 = _context2["catch"](22);
+            case 35:
+              _context2.prev = 35;
+              _context2.t0 = _context2["catch"](23);
 
               _iterator.e(_context2.t0);
 
-            case 37:
-              _context2.prev = 37;
+            case 38:
+              _context2.prev = 38;
 
               _iterator.f();
 
-              return _context2.finish(37);
+              return _context2.finish(38);
 
-            case 40:
+            case 41:
               result = _objectSpread(_objectSpread({}, result), {}, {
                 permisos: Array.from(new Set(result.permisos.map(JSON.stringify))).map(JSON.parse)
               });
               (0, _response.response)(req, res, 'ME', result, 200);
-              _context2.next = 48;
+              _context2.next = 49;
               break;
 
-            case 44:
-              _context2.prev = 44;
+            case 45:
+              _context2.prev = 45;
               _context2.t1 = _context2["catch"](0);
               console.log(_context2.t1);
               (0, _response.response)(req, res, 'ME', null, 500);
 
-            case 48:
+            case 49:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 44], [22, 34, 37, 40]]);
+      }, _callee2, null, [[0, 45], [23, 35, 38, 41]]);
     }));
 
     function me(_x3, _x4) {

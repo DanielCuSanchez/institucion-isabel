@@ -19,7 +19,7 @@ var Donor = {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              QUERY = "\n      SELECT\n      D.id, telefono,\n      razon_social,\n      D.nombre,\n      rfc, correo_electronico,\n      codigo_postal,\n      domicilio_fiscal,\n      regimen_fiscal,\n      E.nombre Estado,\n      C.clave Clave_CFDI,\n      C.descripcion Descripcion_CFDI\n      FROM\n      donadores D,\n      cfdis C,\n      estados E\n      WHERE\n      D.id_cfdi = C.id\n      AND\n      D.id_estado = E.id\n      AND\n      D.existe = true\n      ORDER BY D.id ASC\n    ";
+              QUERY = "\n       SELECT\n      D.id,\n      razon_social,\n      D.nombre,\n      rfc,\n      telefono,\n      regimen_fiscal,\n      correo_electronico,\n      codigo_postal,\n      domicilio_fiscal,\n      E.nombre Estado,\n      C.clave Clave_CFDI,\n      C.descripcion Descripcion_CFDI\n      FROM\n      donadores D\n      LEFT JOIN cfdis C\n      ON\n      D.id_cfdi = C.id\n      LEFT JOIN estados E\n      ON\n      D.id_estado = E.id\n      WHERE\n      D.existe = true\n      ORDER BY D.id ASC\n    ";
               return _context.abrupt("return", _index.db.query(QUERY));
 
             case 2:
@@ -43,7 +43,7 @@ var Donor = {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              QUERY = "\n      SELECT\n      D.id, telefono,\n      razon_social,\n      D.nombre,\n      rfc, correo_electronico,\n      codigo_postal,\n      domicilio_fiscal,\n      regimen_fiscal,\n      E.nombre Estado,\n      C.clave Clave_CFDI,\n      C.descripcion Descripcion_CFDI\n      FROM\n      donadores D,\n      cfdis C,\n      estados E\n      WHERE\n      D.id_cfdi = C.id\n      AND\n      D.id_estado = E.id\n      AND\n      D.existe = true\n      ORDER BY D.id ASC\n      LIMIT\n        $1\n      OFFSET\n        $2\n    ";
+              QUERY = "\n      SELECT\n      D.id,\n      razon_social,\n      D.nombre,\n      rfc,\n      telefono,\n      regimen_fiscal,\n      correo_electronico,\n      codigo_postal,\n      domicilio_fiscal,\n      E.nombre Estado,\n      C.clave Clave_CFDI,\n      C.descripcion Descripcion_CFDI\n      FROM\n      donadores D\n      LEFT JOIN cfdis C\n      ON\n      D.id_cfdi = C.id\n      LEFT JOIN estados E\n      ON\n      D.id_estado = E.id\n      WHERE\n      D.existe = true\n      ORDER BY D.id ASC\n      LIMIT\n        $1\n      OFFSET\n        $2\n    ";
               return _context2.abrupt("return", _index.db.query(QUERY, [limit, offset]));
 
             case 2:
@@ -67,7 +67,7 @@ var Donor = {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              QUERY = "\n      SELECT D.id, \n      telefono, \n      razon_social, \n      D.nombre nombre, \n      rfc, \n      correo_electronico, \n      codigo_postal, \n      domicilio_fiscal, \n      regimen_fiscal, \n      E.nombre estado, \n      C.clave Clave_CFDI, \n      C.descripcion Descripcion_CFDI,\n      D.id_estado as id_estado,\n      D.id_cfdi as id_cfdi\n      FROM donadores D, cfdis C, estados E\n      WHERE D.id_cfdi = C.id \n      AND D.id_estado = E.id \n      AND D.id = $1 \n      AND D.existe = true\n    ";
+              QUERY = "\n      SELECT\n      D.id,\n      telefono,\n      razon_social, \n      D.nombre nombre, \n      rfc, \n      correo_electronico, \n      codigo_postal, \n      domicilio_fiscal, \n      regimen_fiscal, \n      E.nombre estado, \n      C.clave Clave_CFDI, \n      C.descripcion Descripcion_CFDI,\n      D.id_estado as id_estado,\n      D.id_cfdi as id_cfdi\n      FROM\n      donadores D\n      LEFT JOIN cfdis C\n      ON\n      D.id_cfdi = C.id\n      LEFT JOIN estados E\n      ON\n      D.id_estado = E.id\n      WHERE\n      D.id = $1\n      AND D.existe = true\n    ";
               return _context3.abrupt("return", _index.db.query(QUERY, [id]));
 
             case 2:
