@@ -12,8 +12,7 @@
     "dev": "npx nodemon --exec babel-node src/index.js",
     "deploy": "npx babel src/ --out-dir dist",
     "heroku-postbuild": "cd frontend && npm install && npm run build",
-    "seed-prod": "heroku pg:reset DATABASE | cat SQL/production.sql | heroku pg:psql",
-    "seed-dev": "heroku pg:reset DATABASE | cat SQL/estructura.dev.sql | heroku pg:psql",
+    "seed": "cat SQL/prod.dev.sql | heroku pg:psql",
     "clean": "rm -rf dist frontend/dist",
     "clean-storage": "rm -rf uploads && mkdir uploads"
   },

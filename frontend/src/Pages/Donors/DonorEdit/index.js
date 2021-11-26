@@ -134,9 +134,9 @@ export const DonorEdit = ({ justView }) => {
     setEdit(!edit)
   }
 
-  // if (edit === null) {
-  //   return <Navigate to='/dashboard/NOTFOUND' />
-  // }
+  if (edit === null) {
+    return <Navigate to='/dashboard/NOTFOUND' />
+  }
 
   return (
     <>

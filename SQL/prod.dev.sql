@@ -1,9 +1,9 @@
 -- BASE DE DATOS
 
-\c postgres;
-DROP DATABASE IF EXISTS institucion_isabel;
-CREATE DATABASE institucion_isabel;
-\c institucion_isabel;
+-- \c postgres;
+-- DROP DATABASE IF EXISTS institucion_isabel;
+-- CREATE DATABASE institucion_isabel;
+-- \c institucion_isabel;
 
 -- SET client_encoding = 'LATIN1';
 
@@ -397,12 +397,23 @@ INSERT INTO roles_permisos(id_role , id_permiso) VALUES
 -- Insertar datos tabla usuarios - 20
 
 INSERT INTO usuarios(nombre, apellido, "password", correo_electronico) VALUES
-('Mariana','Gonzalez','$2b$10$lP4/2dA1j3WRz0/Qh9e8V.aKgKO9rMrpIX2sKbx8If2Ueo.Q03Cre','mariana@isabel.mx');
+('Claudia','Flores','$2b$10$lP4/2dA1j3WRz0/Qh9e8V.aKgKO9rMrpIX2sKbx8If2Ueo.Q03Cre','tesorero@isabel.mx'),
+('Liz','Gonzalez','$2b$10$lP4/2dA1j3WRz0/Qh9e8V.aKgKO9rMrpIX2sKbx8If2Ueo.Q03Cre','contador@isabel.mx'),
+('Luis','Flores','$2b$10$lP4/2dA1j3WRz0/Qh9e8V.aKgKO9rMrpIX2sKbx8If2Ueo.Q03Cre','presidente@isabel.mx'),
+('Mariana','Gonzalez','$2b$10$lP4/2dA1j3WRz0/Qh9e8V.aKgKO9rMrpIX2sKbx8If2Ueo.Q03Cre','admin@isabel.mx'),
+('Daniel','Cu','$2b$10$lP4/2dA1j3WRz0/Qh9e8V.aKgKO9rMrpIX2sKbx8If2Ueo.Q03Cre','super@isabel.mx');
 
 -- Insertar datos tabla roles_usuarios
 
 INSERT INTO roles_usuarios(id_usuario , id_role) VALUES
-(1,4);
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,1),
+(5,2),
+(5,3),
+(5,4);
 -- Insertar datos de la tabla CFDIS
 INSERT INTO cfdis(clave, descripcion) VALUES
 ('G01',	'Adquisicion de mercancias'),
